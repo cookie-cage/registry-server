@@ -92,11 +92,11 @@
                 <form id="login-form" action="#" method="post" role="form" style="display: block;">
                   <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                    <input type="text" name="login-username" id="login-username" tabindex="1" class="form-control" placeholder="Username" value="">
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                    <input type="password" name="login-password" id="login-password" tabindex="2" class="form-control" placeholder="Password">
                   </div>
                   <div class="form-group text-center">
                     <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -113,11 +113,16 @@
                 <form id="register-form" action="#" method="post" role="form" style="display: none;">
                   <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                    <input type="text" name="register-username" id="register-username" tabindex="1" class="form-control" placeholder="Username" value="">
                   </div>
                   <div class="form-group">
+                    <label for="username">E-mail</label>
+                    <input type="email" name="register-email" id="register-email" tabindex="1" class="form-control" placeholder="Email" value="">
+                  </div>
+
+                  <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                    <input type="password" name="register-password" id="register-password" tabindex="2" class="form-control" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <div class="row">
@@ -162,15 +167,69 @@
       e.preventDefault();
     });
 
-    $("#login-form").submit(function(e) {
+    $("#register-form").submit(function(e) {
       e.preventDefault();
-      alert("Login form");
+      var thisForm = $(this);
+      var endpoint = '/user/';
+      var data = JSON.stringify({
+                    'username': $('#register-username').val(),
+                    'email': $('#register-email').val(),
+                    'password': $('#register-password').val()
+                  });
+
+      $.ajax({
+        method: "POST",
+        url: endpoint,
+        data: data,
+        contentType:"application/json; charset=utf-8",
+        error: function(json) {
+          alert("Usuario Já existe");
+        },
+        success: function(json) {
+            if(json.message=='success') {
+              location.href = "/editor.html"
+            }
+        }
+      })
+      .done(function( msg ) {
+        alert( "Data Saved: " + msg );
+      });
+
     });
 
 
-    $("#register-form").submit(function(e) {
+    $("#login-form").submit(function(e) {
       e.preventDefault();
-      alert("Register form");
+      e.preventDefault();
+      var thisForm = $(this);
+      var endpoint = '/user/';
+      var data = JSON.stringify({
+                    'username': $('#register-username').val(),
+                    'email': $('#register-email').val(),
+                    'password': $('#register-password').val()
+                  });
+
+      $.ajax({
+        method: "POST",
+        url: endpoint,
+        data: data,
+        contentType:"application/json; charset=utf-8",
+        error: function(json) {
+          alert("Usuario Já existe");
+        },
+        success: function(json) {
+            if(json.message=='success') {
+              // bater na sessao
+              // pegar sessao
+              // salvar no cookie
+              // redirect para editor
+              location.href = "/editor.html"
+            }
+        }
+      })
+      .done(function( msg ) {
+        alert( "Data Saved: " + msg );
+      });
     });
 
 
