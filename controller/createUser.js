@@ -6,6 +6,7 @@ var User = require('../models/user');
 
 module.exports = function userController(req, res, next) {
 console.log('hit the user controller');
+    console.log(req.body);
     // console.log(req.body);
     User.findOne({
         'email': req.body.email
