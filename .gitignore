@@ -3,7 +3,7 @@ npm-debug.log
 .vagrant
 cache/*
 storage
-
+redis-data
 # Environment
 .env*
 !.env.example
