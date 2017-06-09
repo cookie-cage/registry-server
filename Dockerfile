@@ -9,6 +9,7 @@ COPY models models
 COPY node_modules node_modules
 COPY public public
 COPY templates templates
+COPY views views
 COPY test test
 COPY csrf.js csrf.js
 COPY init-mongo.sh init-mongo.sh
