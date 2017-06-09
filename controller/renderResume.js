@@ -70,7 +70,7 @@ module.exports = function renderResume(req, res, err) {
 
         if (!resume) {
             var page = Mustache.render(templateHelper.get('noresume'), {});
-            res.status(HttpStatus.NOT_FOUND).send(page);
+            res.status(200).send(page);
             return;
         }
         if (typeof resume.jsonresume.passphrase === 'string' && typeof req.body.passphrase === 'undefined') {
