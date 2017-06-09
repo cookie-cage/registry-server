@@ -31,6 +31,12 @@
       "institution": "The University of Paper"
     }
   ],
+  "awards": [{
+    "title": "Award",
+    "date": "2001-01-02",
+    "awarder": "Dunder Mifflin",
+    "summary": "Dundie Award"
+  }],
   "references": [
     {
       "reference": "I would suggest doing anything you can to have him on your team.",
