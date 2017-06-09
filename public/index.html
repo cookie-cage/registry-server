@@ -91,8 +91,8 @@
               <div class="col-lg-12">
                 <form id="login-form" action="#" method="post" role="form" style="display: block;">
                   <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="login-username" id="login-username" tabindex="1" class="form-control" placeholder="Username" value="">
+                    <label for="username">E-mail</label>
+                    <input type="text" name="login-email" id="login-email" tabindex="1" class="form-control" placeholder="E-mail" value="">
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
@@ -171,28 +171,37 @@
       e.preventDefault();
       var thisForm = $(this);
       var endpoint = '/user/';
+      var email = $('#register-email').val();
+      var password = $('#register-password').val();
       var data = JSON.stringify({
                     'username': $('#register-username').val(),
-                    'email': $('#register-email').val(),
-                    'password': $('#register-password').val()
+                    'email': email,
+                    'password': password
                   });
 
-      $.ajax({
-        method: "POST",
-        url: endpoint,
-        data: data,
-        contentType:"application/json; charset=utf-8",
-        error: function(json) {
-          alert("Usuario Já existe");
-        },
-        success: function(json) {
-            if(json.message=='success') {
-              location.href = "/editor.html"
-            }
-        }
+      fetch(endpoint, {
+        method: 'POST', 
+        mode: 'cors', 
+        redirect: 'follow',
+        body : data,
+        headers: new Headers({
+          'Content-Type': 'application/json; charset=utf-8'
+        })
       })
-      .done(function( msg ) {
-        alert( "Data Saved: " + msg );
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json){
+
+        if(json.error) {
+          alert(json.error.message);
+        }
+
+        if(json.message=='success') {
+          $("#login-email").val(email);
+          $("#login-password").val(password);
+          $("#login-form").submit();
+        }
       });
 
     });
@@ -200,40 +209,39 @@
 
     $("#login-form").submit(function(e) {
       e.preventDefault();
-      e.preventDefault();
       var thisForm = $(this);
-      var endpoint = '/user/';
+      var endpoint = '/session/';
       var data = JSON.stringify({
-                    'username': $('#register-username').val(),
-                    'email': $('#register-email').val(),
-                    'password': $('#register-password').val()
+                    'email': $('#login-email').val(),
+                    'password': $('#login-password').val()
                   });
-
-      $.ajax({
-        method: "POST",
-        url: endpoint,
-        data: data,
-        contentType:"application/json; charset=utf-8",
-        error: function(json) {
-          alert("Usuario Já existe");
-        },
-        success: function(json) {
-            if(json.message=='success') {
-              // bater na sessao
-              // pegar sessao
-              // salvar no cookie
-              // redirect para editor
-              location.href = "/editor.html"
-            }
-        }
+      fetch(endpoint, {
+        method: 'POST', 
+        mode: 'cors', 
+        redirect: 'follow',
+        body : data,
+        headers: new Headers({
+          'Content-Type': 'application/json; charset=utf-8'
+        })
       })
-      .done(function( msg ) {
-        alert( "Data Saved: " + msg );
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json){
+
+        if(json.error) {
+          alert(json.error.message);
+        }
+
+        if(json.session) {
+          document.cookie = "session=" + json.session;
+          location.href = "/editor.html"
+        }
       });
+
     });
 
-
-  });
+    });
     </script>
 
 </body>
