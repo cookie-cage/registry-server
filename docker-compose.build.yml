@@ -1,0 +1,7 @@
+version: "3"
+services:
+  registry-server:
+    image: rezme/registry-server
+    build:
+      context: .
+      dockerfile: Dockerfile

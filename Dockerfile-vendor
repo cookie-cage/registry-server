@@ -1,0 +1,14 @@
+FROM node:6.11.0-alpine
+
+WORKDIR /registry-server
+
+COPY package.json package.json
+COPY .gitmodules .gitmodules
+COPY .git .git
+
+RUN apk add --no-cache --virtual .build-deps \
+    git \
+    && git submodule update --init --recursive --depth 1 \
+    && apk del .build-deps
+
+CMD ["npm", "install"]

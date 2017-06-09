@@ -1,0 +1,3 @@
+POSTMARK_API_KEY=1234567889
+MONGOHQ_URL=mongodb://mongo:27017/jsonresume
+REDISTOGO_URL=redis://username:password@redis:6379

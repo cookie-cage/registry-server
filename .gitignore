@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.vagrant
+cache/*
+storage
+
+# Environment
+.env*
+!.env.example
