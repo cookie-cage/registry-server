@@ -1,9 +1,0 @@
-version: "2"
-services:
-  registry-server:
-    image: rezme/registry-server
-    build:
-      context: .
-      dockerfile: Dockerfile-vendor
-    volumes:
-      - ./node_modules:/registry-server/node_modules
