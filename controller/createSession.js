@@ -1,10 +1,11 @@
 var HttpStatus = require('http-status-codes');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
+var redis = require('../lib/redis-connection');
 
 module.exports = function createSession(req, res, next) {
 
-    var redis = req.redis
+    var redis = req.redis;
 
     function uid(len) {
         return Math.random().toString(35).substr(2, len);

@@ -34,7 +34,7 @@ input {
 	bottom: 0;
 	left: -0;
 	position: absolute;
-	top: 0;
+	top: 50px;
 	width: 480px;
 }
 #sidebar #panel {
@@ -164,7 +164,7 @@ input {
 	overflow: hidden;
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 50px;
 }
 #preview #overlay {
 	display: none;
@@ -188,7 +188,7 @@ input {
 	position: absolute;
 	resize: none;
 	right: 0;
-	top: 0;
+	top: 50px;
 	width: 100%;
 	z-index: 2;
 }
@@ -292,7 +292,7 @@ input {
 .tse-scrollbar {
 	z-index: 99;
 	position: absolute;
-	top: 0;
+	top: 50px;
 	right: 0;
 	bottom: 0;
 	width: 11px;
@@ -343,4 +343,38 @@ input {
 	#iframe-wrapper {
 		overflow: auto;
 	}
+}
+
+
+.p-y-2 {
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+.p-y-3 {
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+.m-b-1 {
+    margin-bottom: 18px;
+}
+.m-t-1 {
+    margin-top: 18px;
+}
+
+
+/*==========================================================
+				counter section style
+============================================================*/
+
+.main_counter_area{
+	background: url(https://images.pexels.com/photos/196288/pexels-photo-196288.jpeg?w=940&h=650&auto=compress&cs=tinysrgb) no-repeat top center;
+	background-size: cover;
+	overflow: hidden;
+}
+.main_counter_area .main_counter_content .single_counter{
+	background: rgba(236, 72, 72, 0.5);
+		color: #fff;
+}
+.main_counter_area .main_counter_content .single_counter i{
+	font-size:36px;
 }

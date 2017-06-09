@@ -95,7 +95,7 @@ jQuery(document).ready(function($) {
                 alert(json.error.message);
             }
 
-			console.log(json);
+			$("#profile-url").text(json.url);
 
         });
 
@@ -122,7 +122,7 @@ jQuery(document).ready(function($) {
 	(function getThemes() {
 		var list = $("#themes-list");
 		var item = list.find(".item").remove();
-		$.getJSON("https://themes.jsonresume.org/themes.json", function(json) {
+		$.getJSON("/themes.json", function(json) {
 			var themes = json.themes;
 			if (!themes) {
 				return;
