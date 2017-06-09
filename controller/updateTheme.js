@@ -10,8 +10,7 @@ module.exports = function updateTheme(req, res, next) {
     var password = req.body.password;
     var email = req.body.email;
     var theme = req.body.theme;
-    console.log(theme, "theme update!!!!!!!!!!!!1111");
-    // console.log(req.body);
+
     User.findOne({
         'email': email
     }, function(err, user) {

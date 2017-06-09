@@ -63,6 +63,8 @@ function S4() {
 app.get('/', controller.home);
 app.get('/edit', controller.resumeEditor);
 
+app.post('/user', controller.createUser);
+
 app.all('/*', function(req, res, next) {
     //res.header("Access-Control-Allow-Origin", "*");
     //res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -105,7 +107,6 @@ app.post('/:uid', controller.renderResume);
 app.post('/resume', controller.upsertResume);
 app.put('/resume', controller.updateTheme);
 
-app.post('/user', controller.createUser);
 
 app.put('/account', controller.changePassword);
 app.delete('/account', controller.deleteUser);
