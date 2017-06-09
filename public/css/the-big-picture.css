@@ -40,9 +40,7 @@ body {
     -moz-transition: all 0.1s linear;
     transition: all 0.1s linear;
 }
-.panel-login>.panel-heading a.active{
-    font-size: 34px;
-}
+
 .panel-login>.panel-heading hr{
     margin-top: 10px;
     margin-bottom: 0px;
@@ -56,7 +54,7 @@ body {
 }
 .panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
     border: 1px solid #ddd;
-    font-size: 16px;
+    font-size: 14px;
     -webkit-transition: all 0.1s linear;
     -moz-transition: all 0.1s linear;
     transition: all 0.1s linear;

@@ -64,7 +64,7 @@ describe('Resumes: ', function() {
       })
       .expect(200, function(err, res) {
         should.not.exist(err);
-        res.body.should.have.property('url', 'https://registry.jsonresume.org/' + user.username);
+        res.body.should.have.property('url', '/' + user.username);
         // TODO find resume and check theme field
 
         done();
