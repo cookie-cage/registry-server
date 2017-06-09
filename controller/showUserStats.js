@@ -7,7 +7,6 @@ module.exports = function stats(req, res, next) {
     var uid = req.params.uid;
 
     redis.get('views_' + uid, function(err, views) {
-
             res.send({
             views: views * 1
         });

@@ -12,11 +12,17 @@
                 <div class="col-xs-12">
                     <h1>Members</h1>
                 </div>
-                <% users.forEach(function(user){ %>
-                    <a class="pull-left" href="/<%= user.username %>">
-                        <%= user.username %>
-                    </a><br />
-                    <% })%>
+                <div class="col-xs-12">
+                    <ul class="list-group">
+                        <% users.forEach(function(user){ %>
+                        <li class="list-group-item">
+                            <a class="item" href="/<%= user.username %>">
+                                <%= user.username %>
+                            </a>
+                        </li>
+                        <% })%>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- /container -->

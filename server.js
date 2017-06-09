@@ -18,6 +18,7 @@ var points = [];
 var DEFAULT_THEME = 'nominaltech';
 
 var RedisStore = require('connect-redis')(expressSession);
+
 app.set('view engine', 'ejs');
 
 app.use(compress());
