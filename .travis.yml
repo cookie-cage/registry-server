@@ -1,28 +1,22 @@
-language: node_js
-dist: trusty
-node_js:
-  - "0.12"
-  - "4"
-  - "6"
+sudo: required
+
+environment:
+  - RELEASE_VERSION=`cat release_version.txt`
+
 services:
-  - mongodb
-  - redis-server
-env:
-  - MONGOHQ_URL=mongodb://localhost:27017/jsonresume-tests
-git:
-  submodules: false
-  depth: 10
+  - docker
+
 before_install:
-  - git submodule update --init --recursive
+  - docker-compose -f docker-compose.build.yml build
+
 before_script:
-  - echo Give MongoDB time to start accepting connections
-  - sleep 15
-notifications:
-  email:
-    on_success: never
-    on_failure: always
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/45ac156371db25c81ab9
-    on_start: always
-sudo: false   # use container-based architecture; starts up faster
+  - docker tag rezme/registry-server:latest rezme/registry-server:$RELEASE_VERSION
+
+script:
+  - docker login --username $DOCKER_LOGIN_USERNAME --password $DOCKER_LOGIN_PASSWORD
+  - docker push rezme/registry-server:latest
+  - docker push rezme/registry-server:$RELEASE_VERSION
+
+after_script:
+  - docker pull rezme/registry-server:latest
+  - docker pull rezme/registry-server:$RELEASE_VERSION
