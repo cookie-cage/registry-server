@@ -18,6 +18,16 @@ COPY Procfile Procfile
 COPY server.js server.js
 COPY template-helper.js template-helper.js
 
+COPY package.json package.json
+COPY .gitmodules .gitmodules
+COPY .git .git
+
+RUN apk add --no-cache --virtual .build-deps \
+    git \
+    && git submodule update --init --recursive --depth 1 \
+    && apk del .build-deps
+
+
 EXPOSE 3000 5000
 
 CMD ["npm", "start"]
