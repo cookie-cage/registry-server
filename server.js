@@ -1,3 +1,4 @@
+// require('dotenv').load();
 require('./lib/mongoose-connection');
 var redis = require('./lib/redis-connection');
 var express = require("express");
@@ -17,14 +18,12 @@ var points = [];
 var DEFAULT_THEME = 'nominaltech';
 
 var RedisStore = require('connect-redis')(expressSession);
-
 app.set('view engine', 'ejs');
-app.use(compress());
 
+app.use(compress());
 app.use(minify({
     cache: __dirname + '/cache'
 }));
-
 app.use(require('./middleware/allow-cross-domain'));
 app.use(cookieParser());
 
@@ -34,6 +33,7 @@ app.use(expressSession({
     }),
     secret: 'keyboard cat'
 }));
+//app.use(expressSession({secret:'somesecrettokenhere'}));
 
 app.use(express.static(__dirname + '/public', {
     maxAge: 0
@@ -53,15 +53,11 @@ var guid = (function() {
     };
 })();
 
-
 function S4() {
     return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
         .substring(1);
 };
-
-app.get('/', controller.home);
-app.get('/edit', controller.resumeEditor);
 
 app.all('/*', function(req, res, next) {
     //res.header("Access-Control-Allow-Origin", "*");
@@ -74,14 +70,12 @@ app.all('/*', function(req, res, next) {
     next();
 });
 
-
 app.get('/session', controller.checkSession);
-app.post('/session', controller.createSession);
 app.delete('/session/:id', controller.deleteSession);
-
 app.get('/members', controller.renderMembersPage);
 app.get('/stats', controller.showStats);
-
+// export pdf route
+// this code is used by resume-cli for pdf export, see line ~188 for web-based export
 app.get('/pdf', function(req, res) {
     console.log(req.body.resume, req.body.theme);
     request
@@ -97,19 +91,17 @@ app.get('/pdf', function(req, res) {
         });
 });
 
+app.get('/home', controller.home);
 app.get('/:uid.:format', controller.renderResume);
 app.get('/:uid', controller.renderResume);
 app.get('/:uid/stats', controller.showUserStats);
-app.post('/:uid', controller.renderResume);
-
 app.post('/resume', controller.upsertResume);
 app.put('/resume', controller.updateTheme);
-
 app.post('/user', controller.createUser);
-
+app.post('/session', controller.createSession);
 app.put('/account', controller.changePassword);
 app.delete('/account', controller.deleteUser);
-
+app.post('/:uid', controller.renderResume);
 
 process.addListener('uncaughtException', function(err) {
     console.error('Uncaught error in server.js', {
