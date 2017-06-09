@@ -215,6 +215,7 @@
                     'email': $('#login-email').val(),
                     'password': $('#login-password').val()
                   });
+
       fetch(endpoint, {
         method: 'POST', 
         mode: 'cors', 
@@ -228,13 +229,14 @@
         return response.json();
       })
       .then(function(json){
-
         if(json.error) {
           alert(json.error.message);
         }
 
         if(json.session) {
           document.cookie = "session=" + json.session;
+          document.cookie = "email=" + json.email;
+          document.cookie = "username=" + json.username;
           location.href = "/editor.html"
         }
       });
