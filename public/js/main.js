@@ -1,5 +1,9 @@
 // Global by intention.
 var builder;
+window.getCookie = function(name) {
+  match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+  if (match) return match[1];
+}
 
 jQuery(document).ready(function($) {
 	var form = $("#form");
@@ -56,10 +60,43 @@ jQuery(document).ready(function($) {
 		var data = form.data("resume");
 		download(JSON.stringify(data, null, "  "), "resume.json", "text/plain");
 	});
-	$("#export").tooltip({
-		container: "body"
-	});
 
+
+	$("#save").on("click", function() {
+
+		var data = form.data("resume");
+		var email = getCookie("email");
+		var session = getCookie("session");
+		var jsonData = JSON.stringify({
+            'resume': data,
+            'email': email,
+            'session': session
+        });
+
+		console.log(data);
+        fetch('/resume', {
+            method: 'POST',
+            mode: 'cors',
+            redirect: 'follow',
+            body: jsonData,
+            headers: new Headers({
+                'Content-Type': 'application/json; charset=utf-8'
+            })
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (json) {
+
+            if (json.error) {
+                alert(json.error.message);
+            }
+
+			console.log(json);
+
+        });
+
+	});
 
 	$("#reset").on("click", function() {
 		if (confirm("Are you sure?")) {
@@ -139,7 +176,8 @@ jQuery(document).ready(function($) {
 });
 
 function reset() {
-	$.getJSON("json/resume.json", function(data) {
+	var username = getCookie('username');
+	$.getJSON("/"+ username +".json", function(data) {
 		builder.setFormValues(data);
 	});
 }
