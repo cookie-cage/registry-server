@@ -15,7 +15,7 @@ var minify = require('express-minify');
 var controller = require('./controller');
 
 var points = [];
-var DEFAULT_THEME = 'modern';
+var DEFAULT_THEME = 'nominaltech';
 
 var RedisStore = require('connect-redis')(expressSession);
 
