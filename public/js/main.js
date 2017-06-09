@@ -50,6 +50,7 @@ jQuery(document).ready(function($) {
 			$("#theme-current").html(theme);
 			var active = $("#themes-list .item[href='#" + theme + "']").addClass("active");
 			active.siblings().removeClass("active");
+			document.cookie = "theme="+theme;
 		})();
 	}
 
@@ -67,10 +68,12 @@ jQuery(document).ready(function($) {
 		var data = form.data("resume");
 		var email = getCookie("email");
 		var session = getCookie("session");
+		var theme = getCookie("theme");
 		var jsonData = JSON.stringify({
             'resume': data,
             'email': email,
-            'session': session
+            'session': session,
+			'theme' : theme
         });
 
 		console.log(data);
