@@ -85,15 +85,11 @@ $(function () {
                     document.cookie = "session=" + json.session;
                     document.cookie = "email=" + json.email;
                     document.cookie = "username=" + json.username;
-                    location.href = "/editor.html"
+                    location.href = "/edit"
                 }
             });
 
     });
-
-
-
-
 
 var getJSON = function(url) {
   return new Promise(function(resolve, reject) {

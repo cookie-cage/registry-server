@@ -1,0 +1,89 @@
+{
+  "basics": {
+    "name": "Michael G. Scott",
+    "picture": "http://vignette3.wikia.nocookie.net/theoffice/images/5/5a/Michael-scott.jpg/revision/latest?cb=20101031192753",
+    "label": "Friend. Boss. Entertainer.",
+    "summary": "To make a difference. To save lives. To oversee paper sales in a mid-sized market.",
+    "email": "boss@dundermifflin.com",
+    "website": "https://en.wikipedia.org/wiki/Dunder_Mifflin",
+    "location": {
+      "city": "Scranton, Pennsylvania",
+      "countryCode": "USA"
+    },
+    "profiles": [
+      {
+        "username": "theofficenbc",
+        "url": "https://twitter.com/theofficenbc",
+        "network": "twitter"
+      },
+      {
+        "url": "https://github.com/cookie-cage",
+        "username": "cookie-cage",
+        "network": "github"
+      }
+    ]
+  },
+  "education": [
+    {
+      "endDate": "2012-12-12",
+      "startDate": "2008-02-12",
+      "area": "Software Engineering ",
+      "studyType": "Bachelors",
+      "institution": "The University of Paper"
+    }
+  ],
+  "awards": [{
+    "title": "Award",
+    "date": "2001-01-02",
+    "awarder": "Dunder Mifflin",
+    "summary": "Dundie Award"
+  }],
+  "references": [
+    {
+      "reference": "I would suggest doing anything you can to have him on your team.",
+      "name": "Pam Beesley, receptionist of Papper Dunfim, Inc."
+    },
+    {
+      "reference": "Highly recommended!",
+      "name": "Jim Halpert, Sales of Papper Dunfim, Inc."
+    },
+    {
+      "reference": "I take it. He is the definition of an A player.",
+      "name": "Dwight schrute, Senior Software Engineer at Papper Dunfim, Inc."
+    }
+  ],
+  "skills": [
+    {
+      "keywords": [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "React",
+        "Redux"
+      ],
+      "name": "Frontend"
+    },
+    {
+      "keywords": [
+        "Node",
+        "Ruby",
+        "Postgres",
+        "DynamoDb"
+      ],
+      "name": "Backend"
+    }
+  ],
+  "work": [
+    {
+      "highlights": [
+        "The boss.",
+        "Actor"
+      ],
+      "summary": "Managed, inspired and protected an 18-member family from brutal, doggy dog world.\nMaintained the highest sales average of any branch despite weak economy and obsolete product.\n",
+      "website": "https://en.wikipedia.org/wiki/Dunder_Mifflin",
+      "company": "Dunder Mifflin",
+      "position": "Regional Manager",
+      "startDate": "2001-01-01"
+    }
+  ]
+}

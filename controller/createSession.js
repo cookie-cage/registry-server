@@ -25,8 +25,6 @@ module.exports = function createSession(req, res, next) {
 
             redis.set(sessionUID, true, redis.print);
 
-
-
             // var session = value.toString();
 
             req.session.username = user.username;

@@ -1,3 +1,3 @@
 module.exports = function renderPage(req, res, err) {
-    res.render('home');
+    res.render('editor');
 };

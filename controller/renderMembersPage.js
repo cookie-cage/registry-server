@@ -1,5 +1,3 @@
-var Mustache = require('mustache');
-var templateHelper = require('../template-helper');
 var User = require('../models/user');
 
 module.exports = function renderMembersPage(req, res, next) {
@@ -18,10 +16,11 @@ module.exports = function renderMembersPage(req, res, next) {
             });
         });
 
-        var page = Mustache.render(templateHelper.get('members'), {
-            usernames: usernameArray
-        });
+        template_data = {
+            users: usernameArray
+        }
 
-        res.send(page);
+        res.render('members', template_data);
+        
     });
 };
