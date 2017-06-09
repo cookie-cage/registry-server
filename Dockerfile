@@ -13,7 +13,6 @@ COPY test test
 COPY csrf.js csrf.js
 COPY init-mongo.sh init-mongo.sh
 COPY newrelic.js newrelic.js
-COPY package.json package.json
 COPY Procfile Procfile
 COPY server.js server.js
 COPY template-helper.js template-helper.js
@@ -27,6 +26,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && git submodule update --init --recursive --depth 1 \
     && apk del .build-deps
 
+RUN npm install
 
 EXPOSE 3000 5000
 
