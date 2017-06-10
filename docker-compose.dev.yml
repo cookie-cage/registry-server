@@ -1,9 +1,0 @@
-version: '2'
-
-services:
-  registry-server:
-    image: hackaton/registry:1
-    env_file: .env
-    command: sh -c 'npm install'
-    volumes:
-      - ".:/registry-server"

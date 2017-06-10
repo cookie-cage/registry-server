@@ -1,5 +1,0 @@
-version: "2"
-services:
-  registry-server:
-    image: rezme/registry-server
-    build: .

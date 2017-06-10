@@ -7,7 +7,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js server.js",
+    "start": "node server.js",
     "test": "NODE_ENV=test node node_modules/mocha/bin/mocha test/**/*.js"
   },
   "repository": {
