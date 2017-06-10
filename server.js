@@ -93,6 +93,7 @@ app.get('/pdf', function(req, res) {
 });
 
 app.get('/', controller.home);
+app.get('/edit', controller.resumeEditor);
 app.get('/:uid.:format', controller.renderResume);
 app.get('/:uid', controller.renderResume);
 app.get('/:uid/stats', controller.showUserStats);
