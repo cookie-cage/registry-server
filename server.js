@@ -92,7 +92,7 @@ app.get('/pdf', function(req, res) {
         });
 });
 
-app.get('/home', controller.home);
+app.get('/', controller.home);
 app.get('/:uid.:format', controller.renderResume);
 app.get('/:uid', controller.renderResume);
 app.get('/:uid/stats', controller.showUserStats);
