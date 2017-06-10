@@ -8,7 +8,8 @@ services:
 
 before_install:
   - export RELEASE_VERSION=`cat release_version.txt`
-  - docker-compose -f docker-compose.build.yml build
+  - docker-compose -f docker-compose.build.yml up
+  - docker-compose -f docker-compose.yml build
 
 before_script:
   - docker tag rezme/registry-server:latest rezme/registry-server:$RELEASE_VERSION

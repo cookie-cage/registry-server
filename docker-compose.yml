@@ -25,19 +25,6 @@ services:
       - redis
     ports:
       - 5000:5000
-      - 3000:3000
     volumes:
-      - ./controller:/registry-server/controller
-      - ./lib:/registry-server/lib
-      - ./middleware:/registry-server/middleware
-      - ./models:/registry-server/models
-      - ./public:/registry-server/public
-      - ./templates:/registry-server/templates
-      - ./test:/registry-server/test
-      - ./views:/registry-server/views
-      - ./csrf.js:/registry-server/csrf.js
-      - ./server.js:/registry-server/server.js
-      - ./template-helper.js:/registry-server/template-helper.js
-      - ./package.json:/registry-server/package.json
+      - .:/registry-server
     command: /bin/sh -c "npm install -g nodemon ; nodemon server.js"
-      

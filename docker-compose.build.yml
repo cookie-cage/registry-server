@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  registry-server:
+    image: rezme/registry-server
+    env_file: env-example
+    volumes:
+      - .:/registry-server
+    command: /bin/sh -c "npm install"
